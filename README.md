@@ -175,6 +175,7 @@ main_fullySampledRecon.m
 ```
 
 using MATLAB. The resuls are written into a ``.mat`` file in the data folder as ``B1Map_full`` in µT and ``flipAngleMap_full`` as normalized nominal flip angle in %. 
+
 For coil combination an implementation of the algorithm proposed by Walsh et al. was used. 
 (Walsh DO, Gmitro AF, Marcellin MW. Adaptive reconstruction of phased array MR imagery. Magn Reson Med 2000;43(5):682–690) [DOI](https://doi.org/10.1002/(sici)1522-2594(200005)43:5<682::aid-mrm10>3.0.co;2-g)
 
