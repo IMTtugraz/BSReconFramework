@@ -129,8 +129,8 @@ wget https://zenodo.org/record/1296051/files/smaps_walsh3d_slice.mat
 
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1296051.svg)](https://doi.org/10.5281/zenodo.1296051)
- 
-run the file 
+
+The file ``gre_BlochSiegert_3D.dat`` contains a fully-sampled Bloch Siegert 3D-dataset acquired with a GRE-sequence. For reconstruction run the file 
 
 ```
 main_reconstructRetrospectivelySubsampled.m 
@@ -149,45 +149,32 @@ using MATLAB and select a subsampling pattern out of
 The resuls are written into a ``.mat`` file in the data folder as ``B1Map`` in µT and ``flipAngleMap`` as normalized nominal flip angle in %.
 
 
-## DEMO 2: Reconstruction from ISMRMRD data for real accelerated cine cardiac data (T-Pat and radial acquisition)
+## DEMO 2: Reconstruction from a prospectively subsampled dataset in the human brain using a block pattern of size 12x4
 
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.807635.svg)](https://doi.org/10.5281/zenodo.807635)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1296051.svg)](https://doi.org/10.5281/zenodo.1296051)
 
-Results are exported to dicom format
+The file ``gre_BlochSiegert_acc_12x4.dat`` contains a prospectively subsampled Bloch Siegert 3D-dataset using a block pattern with size 12x4. For reconstruction run the file 
 
-1 Cartesian
 ```
-wget https://zenodo.org/record/807635/files/cine_tpat_8_sedona.h5 --no-check-certificate
-mkdir ./recon_tpat/
-avionic  -o -p ./CUDA/config/default_cine.cfg  -r cine_tpat_8_sedona.h5 -a ./recon_tpat/recon.dcm
+main_reconstructProspectivelySubsampled.m
 ```
 
-2 Radial
+using MATLAB. The resuls are written into a ``.mat`` file in the data folder as ``B1Map`` in µT and ``flipAngleMap`` as normalized nominal flip angle in %.
+
+
+## Demo 3: Reconstruction of the fully sampled reference without any regularization
+
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1296051.svg)](https://doi.org/10.5281/zenodo.1296051)
+
+For comparison the fully sampled reference can be gained out of ``gre_BlochSiegert_3D.dat`` by running the file
+
 ```
-wget https://zenodo.org/record/807635/files/cine_rad_24_sedona.h5 --no-check-certificate
-mkdir ./recon_rad/
-avionic -o -p ./CUDA/config/default_cine.cfg -r cine_rad_24_sedona.h5 -a -n ./recon_rad/recon.dcm
+main_fullySampledRecon.m
 ```
 
-## Demo 3: Reconstruction of MATLAB data with demo script 
-
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.815385.svg)](https://doi.org/10.5281/zenodo.815385)
-
-Please look into demo_avionic.m
-
-1 Cartesian testdata for dynamic MRI reconstruction with ICTGV, spatio-temp. TGV2 or spatio-temp. TV
-
-testdata_cinecardiac_avionic.mat: Cartesian acquired fully-sampled retrospectively gated CINE cardiac data (bSSFP) in short-axis view
-
- 
-2 Cartesian volumetric testdata for static TGV reconstruction, example for retrospective acceleration with CAIPIRINHA
-
-testdata_cart_avionic_tgv3d.mat: Cartesian VIBE data of the left hand with partial-fourier acquisition
-
- 
-3 Non-Cartesian volumetric testdata_for static TGV2 reconstruction, retrospective acceleration possible by selection a lower number of spokes
-
-noncart_avionic_tgv3d.mat: radial VIBE data of the human brain with golden-angle stack-of-stars sampling 
+using MATLAB. The resuls are written into a ``.mat`` file in the data folder as ``B1Map_full`` in µT and ``flipAngleMap_full`` as normalized nominal flip angle in %. 
+For coil combination an implementation of the algorithm proposed by Walsh et al. was used. 
+(Walsh DO, Gmitro AF, Marcellin MW. Adaptive reconstruction of phased array MR imagery. Magn Reson Med 2000;43(5):682–690) [DOI](10.1002/(sici)1522-2594(200005)43:5<682::aid-mrm10>3.0.co;2-g)
 
