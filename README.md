@@ -125,28 +125,29 @@ wget https://zenodo.org/record/1296051/files/smaps_walsh3d_slice.mat
 ```
 
 
-## DEMO 1: Reconstruction from BINARY data for retrospectively accelerated cine cardiac and cardiac perfusion data (shell script)
+## DEMO 1: Reconstruction of retrospectively subsampled data in the human brain using different subsampling patterns
 
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.807196.svg)](https://doi.org/10.5281/zenodo.807196)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1296051.svg)](https://doi.org/10.5281/zenodo.1296051)
  
-Available examples for sampling patterns: "vista", "vd" (variable density), "uni" uniformly sampled
-Available acceleration factors: 4,8,12,16
-Available functional types: ICTGV2, TGV2, TV 
+run the file 
 
-Results are exported again to binary format
-
-Example for ICTGV reconstruction with VISTA pattern and subsampling factor 12
-
-1 CINE cardiac imaging
 ```
-./demo_avionic_cine.sh --functype=ICTGV2 --pattern=vista --red=12
+main_reconstructRetrospectivelySubsampled.m 
 ```
 
-2 Cardiac perfusion imaging
+using MATLAB and select a subsampling pattern out of 
+
 ```
-./demo_avionic_perf.sh --functype=ICTGV2 --pattern=vista --red=12
+'full':     fully sampled
+'block':    block pattern in k-space center
+'eliptic':  eliptical pattern in k-space center
+'vdrandom': variable density pattern
+'gauss':    pattern with Gaussian density function
 ```
+
+The resuls are written into a ``.mat`` file in the data folder as ``B1Map`` in µT and ``flipAngleMap`` as normalized nominal flip angle in %.
+
 
 ## DEMO 2: Reconstruction from ISMRMRD data for real accelerated cine cardiac data (T-Pat and radial acquisition)
 
