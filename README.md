@@ -54,7 +54,8 @@ For questions and comments on the project please contact [Matthias Schloegl](mai
 * [ISMRMRD](https://github.com/ismrmrd/ismrmrd)
 * [DCMTK](http://dicom.offis.de/dcmtk.php.de)
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) (for code docs)
-* [mapVBVD](https://github.com/cjohnevans/Gannet2.0/blob/master/mapVBVD.m) by Philipp Ehses (for reading Siemens raw data files)
+* [mapVBVD](https://github.com/cjohnevans/Gannet2.0/blob/master/mapVBVD.m) by Philipp Ehses (for reading Siemens raw data files, already included in repository)
+* [MATLAB](https://www.mathworks.com/products/matlab.html) tested under the version R2016b
 
 ## Setup
 0 Preparations
@@ -114,19 +115,16 @@ in ~/.bashrc add:
 export PATH=/path/to/AVIONIC/bin/:${PATH} 
 ```
 
-## Doc
-In order to generate the code documentation, run
+6 Download BSReconFramework and download sample data
+```
+git clone https://github.com/IMTtugraz/BSReconFramework.git
+cd ./BSReconFramework/data/
+wget https://zenodo.org/record/1296051/files/gre_BlochSiegert_3D.dat
+wget https://zenodo.org/record/1296051/files/gre_BlochSiegert_acc_12x4.dat
+wget https://zenodo.org/record/1296051/files/smaps_walsh3d_slice.mat
+```
 
-```
-make doc
-```
-and open the file `doc/html/index.html`. 
 
-
-## Display help
-```
-avionic --help
-```
 ## DEMO 1: Reconstruction from BINARY data for retrospectively accelerated cine cardiac and cardiac perfusion data (shell script)
 
 
